@@ -214,16 +214,18 @@
         <h2 class="heading">Contact <span>Me</span></h2>
         <form action="contact.php" method="post">
             <div class="input-box">
-                <input type="text" id="full-name" placeholder="Full Name">
-                <input type="email"  id="email" placeholder="Email Address">
+                <input type="text" id="full-name" name="full-name" placeholder="Full Name">
+                <input type="email" id="email" name="email" placeholder="Email Address">
             </div>
             <div class="input-box">
-                <input type="number" id="mobile-number" placeholder="Mobile Number">
-                <input type="text" id="email-subject" placeholder="Email Subject">
+                <input type="number" id="mobile-number" name="mobile-number" placeholder="Mobile Number">
+                <input type="text" id="email-subject" name="email-subject" placeholder="Email Subject">
             </div>
-            <textarea id="message" cols="30" rows="10" placeholder="Your Message"></textarea>
+            <textarea id="message" name="message" cols="30" rows="10" placeholder="Your Message"></textarea>
             <input type="submit" value="Send Message" class="btn">
         </form>
+
+        <div id="status-message"></div>
     </section>
 
     <footer class="footer">
@@ -236,37 +238,6 @@
             </a>
         </div>
     </footer>
-    <script>
-        function sendMessage() {
-            // Get form input values
-            var fullName = document.getElementById("full-name").value;
-            var email = document.getElementById("email").value;
-            var mobileNumber = document.getElementById("mobile-number").value;
-            var emailSubject = document.getElementById("email-subject").value;
-            var message = document.getElementById("message").value;
-
-            // Create an object to hold the data
-            var data = {
-                fullName: fullName,
-                email: email,
-                mobileNumber: mobileNumber,
-                emailSubject: emailSubject,
-                message: message
-            };
-
-            // Send the data to a server-side script using AJAX
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "send_email.php", true); // Replace with your server-side script URL
-            xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-            xhr.send(JSON.stringify(data));
-
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    // The email has been sent successfully
-                    alert("Message sent successfully!");
-                }
-            };
-        }
     </script>
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
     <script src="https://unpkg.com/scrollreveal"></script>
